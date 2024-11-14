@@ -5,7 +5,7 @@ public class ADigitalLottery {
     private String qrCode;
     private String idSaleAgent;
     private List<Integer> numberSelection;
-    private Integer powerNumber; // Chỉ áp dụng cho Power 6/55
+    private Integer powerNumber;
 
     // Constructor cho Mega 6/45
     public ADigitalLottery(String date, String qrCode, String idSaleAgent, List<Integer> numberSelection) {
@@ -22,6 +22,11 @@ public class ADigitalLottery {
         this.idSaleAgent = idSaleAgent;
         this.numberSelection = numberSelection;
         this.powerNumber = powerNumber;
+    }
+
+    public ADigitalLottery(String qrCode, String date) {
+        this.qrCode = qrCode;
+        this.date = date;
     }
 
     public String getQrCode() {

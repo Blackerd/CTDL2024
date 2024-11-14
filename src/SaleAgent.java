@@ -18,20 +18,21 @@ class SaleAgent {
     }
 
     // Tạo vé Mega 6/45
-    public ADigitalLottery createMega645Lottery(String date) {
+    public Mega645Lottery createMega645Lottery(String date) {
         List<Integer> numbers = generateUniqueRandomNumbers(6, 45);
-        String qrCode = "QR" + new Random().nextInt(100000);
-        ADigitalLottery lottery = new ADigitalLottery(date, qrCode, id, numbers);
+        String qrCode = generateQrCode();
+        Mega645Lottery lottery = new Mega645Lottery(qrCode, date, id, numbers);
         addLottery(lottery);
         return lottery;
     }
 
+
     // Tạo vé Power 6/55 với số Power đặc biệt
-    public ADigitalLottery createPower655Lottery(String date) {
+    public Power655Lottery createPower655Lottery(String date) {
         List<Integer> numbers = generateUniqueRandomNumbers(6, 55);
         Integer powerNumber = new Random().nextInt(55) + 1;
-        String qrCode = "QR" + new Random().nextInt(100000);
-        ADigitalLottery lottery = new ADigitalLottery(date, qrCode, id, numbers, powerNumber);
+        String qrCode = generateQrCode();
+        Power655Lottery lottery = new Power655Lottery(qrCode, date, id, numbers, powerNumber);
         addLottery(lottery);
         return lottery;
     }
@@ -49,6 +50,7 @@ class SaleAgent {
         return numbers;
     }
 
+    // In ra thông tin tất cả các vé số đã bán
     public String printRandomLottery() {
         if (listLottery.isEmpty()) return "Không có vé nào được bán";
         Random rand = new Random();
@@ -63,6 +65,35 @@ class SaleAgent {
                 ", address='" + address + '\'' +
                 ", listLottery=" + listLottery +
                 '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<ADigitalLottery> getListLottery() {
+        return listLottery;
+    }
+
+    public void setListLottery(List<ADigitalLottery> listLottery) {
+        this.listLottery = listLottery;
+    }
+
+
+    private String generateQrCode() {
+        return "QR" + System.currentTimeMillis(); // Ví dụ đơn giản
     }
 }
 

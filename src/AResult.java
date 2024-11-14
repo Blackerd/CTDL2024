@@ -5,7 +5,8 @@ public class AResult {
     private List<Integer> winningNumbers;
     private Integer powerNumber;  // Số Power cho Power 6/55
 
-    public AResult(List<Integer> winningNumbers, Integer powerNumber) {
+    public AResult(String date, List<Integer> winningNumbers, Integer powerNumber) {
+        this.date = date;
         this.winningNumbers = winningNumbers;
         this.powerNumber = powerNumber;
     }

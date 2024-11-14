@@ -1,12 +1,11 @@
 import java.util.*;
 
-// Lớp đại diện cho Thông Tin Giải Thưởng
 class APrize {
     private double amount;
     private String name;
     private String rule;
     private List<AResult> listOfResult;
-    private int maxNumber;      // Thêm số tối đa (45 cho Mega, 55 cho Power)
+    private int maxNumber;
     private int pickCount;
     private boolean hasPowerNumber;
 
@@ -90,8 +89,8 @@ class APrize {
         listOfResult.add(result);
     }
 
-    // Phương thức để quay thưởng mà không dùng Set
-    public AResult drawResult() {
+    // Phương thức để quay thưởng
+    public AResult drawResult(String date) {
         Random random = new Random();
         List<Integer> winningNumbers = new ArrayList<>();
 
@@ -103,7 +102,9 @@ class APrize {
         }
 
         Integer powerNumber = hasPowerNumber ? random.nextInt(maxNumber) + 1 : null;
-        return new AResult(winningNumbers, powerNumber);
+        AResult result = new AResult(date, winningNumbers, powerNumber);
+        addResult(result);
+        return result;
     }
 
 }
